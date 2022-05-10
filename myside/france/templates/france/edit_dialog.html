@@ -1,0 +1,58 @@
+{% extends 'france/index.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Edit Dialog
+{% endblock %}
+
+{% block link %}
+<!-- Additional files css -->
+{% endblock %}
+
+{% block main %}
+<div>
+    <h3>Dialog scenki</h3>
+</div>
+<br><hr><br>
+<div>
+    <h1>Test Zdarzeń</h1>
+    {% if test %}
+    <h4>{{ test }}</h4>
+    {% endif %}
+</div>
+<hr>
+<div>
+    <h2>Dodaj element</h2>
+    <a href="{% url 'add-phrase' situation.id %}" class="btn btn-success">Add sentence</a>
+    <a href="{% url 'add-word' situation.id %}" class="btn btn-success">Add word</a>
+</div>
+<br><hr><br>
+<div>
+
+    <h2>{{ situation.name }}</h2>
+    <h3>{{ situation.description }}</h3>
+    <br>
+    <a href="{% url 'delete-scenes' situation.id %}" class="btn btn-danger" title="Kliknięcie spowoduje trwałe usunięcie tej scenki i wszystkich elementów które są powiązane z nią">Delete Scene</a>
+    <a href="{% url 'edit-scenes' situation.id %}" class="btn btn-primary">Edit Scene</a>
+    <br>
+    <br>
+    {% for sentence in dialog_list %}
+    <div>
+        <h2><b>{{ sentence.character_name }}</b></h2><br>
+        <h3>{{ sentence.sentence }}</h3>
+        <div>
+            <a href="{% url 'delete-phrase' situation.id sentence.id %}" class="btn btn-danger" title="Kliknięcie spowoduje stałe usunięcie tego wpisu">Delete</a>
+            <a href="{% url 'edit-phrase' situation.id sentence.order %}" class="btn btn-success">Edit</a>
+            <a href="{% url 'phrase-order-up' situation.id sentence.order %}" class="btn btn-success">Up</a>
+            <a href="{% url 'phrase-order-down' situation.id sentence.order %}" class="btn btn-success">Down</a>
+        </div>
+    </div>
+    {% endfor%}
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<!-- Additional files js -->
+{% endblock %}

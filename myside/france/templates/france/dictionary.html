@@ -1,0 +1,85 @@
+{% extends 'france/index.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Dictionary
+{% endblock %}
+
+{% block link %}
+<!-- Additional files css -->
+{% endblock %}
+
+{% block main %}
+<div>
+    <h2>To jest słownik zawierający wszystkie słowa ze scenek</h2>
+</div>
+<br><hr><br>
+<div>
+    <h2>Wyszukaj słowo</h2>
+    <form method="post">
+        {% csrf_token %}
+        
+        {{ form|crispy }}
+        <button type="submit" class="btn btn-success">Search</button>
+    </form>
+</div>
+{% if search_word %}
+<br><hr><br>
+<div>
+    <h3>Słowo</h3>
+    <h4>{{ search_word.word}} - {{ search_word.translate }}</h4>
+    <h5>{{ search_word.phonetic }}</h5>
+    <h4>{{ search_word.description }}</h4>
+</div>
+{% endif %}
+{% if user.is_staff or perms.france.add_word %}
+<br><hr><br>
+<div>
+    <h2>Dodaj słowo</h2>
+    <a href="{% url 'add-word' 0 %}" class="btn btn-primary">Add word</a>
+</div>
+{% endif%}
+<br><hr><br>
+
+<div>
+    <table>
+        <thead>
+            <tr>
+                <th>Word pl</th>
+                <th>Word fr</th>
+                <th>Description</th>
+                <th>Phonetic</th>
+                {% if user.is_staff %}
+                <th>Operation</th>
+                {% endif%}
+            </tr>
+        </thead>
+        <tbody>
+            {% for word in dictionary %}
+            <tr>
+                <td>{{ word.word_pl }}</td>
+                <td>{{ word.word_fr }}</td>
+                <td>{{ word.description }}</td>
+                <td>{{ word.phonetic }}</td>
+                {% if user.is_staff or perms.france.change_word or perms.france.delete_word %}
+                <td>
+                    {% if perms.france.change_word %}
+                    <a href="{% url 'edit-word' word.id %}" class="btn btn-primary">Edit word</a>
+                    {% endif %}
+                    {% if perms.france.delete_word %}
+                    <a href="{% url 'delete-word' word.id %}" class="btn btn-danger" title="Jeśli klikniesz usuniesz to słowo na stałe">Delete</a>
+                    {% endif %}
+                </td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!-- Additional files js -->
+{% endblock %}

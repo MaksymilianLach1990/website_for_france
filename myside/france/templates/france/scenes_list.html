@@ -1,0 +1,40 @@
+{% extends 'france/index.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Scenes
+{% endblock %}
+
+{% block link %}
+<!-- Additional files css -->
+{% endblock %}
+
+{% block main %}
+<div>
+    <h3>Scenki</h3>
+    {% if user.is_staff or perms.france.add_scenes %}
+    <a href="{% url 'add-scenes' %}" class="btn btn-primary">Add Scenes</a>
+    {% endif %}
+</div>
+<br><hr><br>
+<div>
+    {% if scenes_list %}
+    {% for scene in scenes_list %}
+    <div>
+        <h2>Title: {{ scene.name }}</h2><br>
+        <h4>Opis: {{ scene.description }}</h4>
+        <h5>Data : {{ scene.created_at }}</h5>
+    </div>
+    <a class="btn btn-primary" href="{% url 'dialog' scene.id %}">Go to</a>
+    <hr>
+    {% endfor%}
+    {% else %}
+    <h3>{{ message }}</h3>
+    {% endif%}
+</div>
+{% endblock %}
+
+{% block scripts %}
+<!-- Additional files js -->
+{% endblock %}

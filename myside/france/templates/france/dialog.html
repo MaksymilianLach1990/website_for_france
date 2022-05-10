@@ -1,0 +1,38 @@
+{% extends 'france/index.html' %}
+{% load static %}
+{% load crispy_forms_tags %}
+
+{% block title %}
+Dialog
+{% endblock %}
+
+{% block link %}
+<!-- Additional files css -->
+{% endblock %}
+
+{% block main %}
+<div>
+    <h3>Dialog scenki</h3>
+</div>
+<br><hr><br>
+<div>
+
+    <h2>{{ situation.name }}
+    {% if user.is_staff or perms.france.change_scenes %} 
+    | <a class="btn btn-primary" href="{% url 'edit-dialog' situation.id %}">Edit</a></h2>
+    {% endif %}
+    <h3>{{ situation.description }}</h3>
+    {% for sentence in dialog_list %}
+    <div>
+        <h2><b>{{ sentence.character_name }}</b></h2><br>
+        <h3>{{ sentence.sentence }}</h3>
+    </div>
+    {% endfor%}
+</div>
+<hr>
+
+{% endblock %}
+
+{% block scripts %}
+<!-- Additional files js -->
+{% endblock %}
