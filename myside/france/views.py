@@ -76,6 +76,7 @@ def edit_scenes(request, scene_id):
     if request.method == 'POST':
         scene.name = request.POST['name']
         scene.description = request.POST['description'] 
+        scene.scene_image = request.POST['scene_image']
         scene.save()
 
         return redirect(f'edit-dialog', scene_id=scene_id)
