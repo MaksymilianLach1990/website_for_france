@@ -4,3 +4,8 @@ th, td {
     font-size: 20px;
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
+
+table {
+    margin: 0 auto;
+    
+}
