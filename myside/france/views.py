@@ -78,7 +78,7 @@ def edit_scenes(request, scene_id):
         scene.description = request.POST['description'] 
         scene.save()
 
-        return redirect(f'/france/edit-dialog/{scene_id}')
+        return redirect(f'edit-dialog', scene_id=scene_id)
 
     form = ScenesCreateForm(instance=scene)
 
@@ -96,7 +96,7 @@ def delete_scenes(request, scene_id):
     scene = Scenes.objects.get(id=scene_id)
     scene.delete()
 
-    return redirect('/france/scenes-list')
+    return redirect('scenes-list')
 
 # Edit Dialog section
 @login_required(login_url="/login")
@@ -138,7 +138,7 @@ def add_phrase(request, scene_id):
         
         form.save()
 
-        return redirect(f'/france/edit-dialog/{scene_id}')
+        return redirect(f'edit-dialog', scene_id=scene_id)
 
     context = {
         'title': 'Dodaj wypowiedź',
@@ -158,7 +158,7 @@ def edit_phrase(request, scene_id, phrase_order):
 
         phrase.save()
 
-        return redirect(f'/france/edit-dialog/{scene_id}')
+        return redirect(f'edit-dialog', scene_id=scene_id)
         
 
     context = {
@@ -174,27 +174,27 @@ def delete_phrase(request, scene_id, phrase_id):
     phrase = Phrase.objects.get(id=phrase_id)
     phrase.delete()
 
-    return redirect(f'/france/edit-dialog/{scene_id}')
+    return redirect(f'edit-dialog', scene_id=scene_id)
 
 @login_required(login_url="/login")
 @permission_required("france.change_phrase", login_url="/france", raise_exception=True)
 def phrase_order_up(request, scene_id, phrase_order):
     if phrase_order == 1:
-        return redirect(f'/france/edit-dialog/{scene_id}')
+        return redirect(f'edit-dialog', scene_id=scene_id)
 
     Phrase().go_up(phrase_order, scene_id)
     
-    return redirect(f'/france/edit-dialog/{scene_id}')
+    return redirect(f'edit-dialog', scene_id=scene_id)
 
 @login_required(login_url="/login")
 @permission_required("france.change_phrase", login_url="/france", raise_exception=True)
 def phrase_order_down( request, phrase_order, scene_id):
     if phrase_order == max([phrase.order for phrase in Phrase.objects.filter(scenes=scene_id).all()]):
-        return redirect(f'/france/edit-dialog/{scene_id}')
+        return redirect(f'edit-dialog', scene_id=scene_id)
 
     Phrase().go_down(scene_id, phrase_order)
 
-    return redirect(f'/france/edit-dialog/{scene_id}')
+    return redirect(f'edit-dialog', scene_id=scene_id)
 
 # Dictionary section
 # Everyone can see
@@ -243,9 +243,9 @@ def add_word(request, scene_id):
             word.word_fr = word.word_fr.lower()
             word.save()
         if scene_id == 0:
-            return redirect('/france/dictionary')
+            return redirect('dictionary')
         else:
-            return redirect(f'/france/edit-dialog/{scene_id}')
+            return redirect(f'edit-dialog', scene_id=scene_id)
     if scene_id == 0:
         form = WordCreateForm
     else:
@@ -278,7 +278,7 @@ def edit_word(request, word_id):
         
         word.save()
 
-        return redirect('/france/dictionary')
+        return redirect('dictionary')
 
     form = WordCreateForm(instance=word)
 
@@ -296,7 +296,7 @@ def delete_word(request, word_id):
     word = Word.objects.get(id=word_id)
     word.delete()
 
-    return redirect('/france/dictionary')
+    return redirect('dictionary')
 
 
 
