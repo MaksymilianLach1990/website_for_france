@@ -43,7 +43,7 @@ def add_scenes(request):
             scene_id = Scenes.objects.filter(name=request.POST['name']).first()
             return redirect(f'/france/dialog/{scene_id.id}')
         else:
-            return redirect("/france/add-scenes")
+            return redirect('add-scenes')
 
     context = {
         'title': "Dodaj Scenkę",
