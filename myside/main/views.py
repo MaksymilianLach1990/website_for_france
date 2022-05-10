@@ -44,7 +44,7 @@ def create_post(request):
             post = form.save(commit=False)
             post.author =request.user
             post.save()
-            return redirect("/home")
+            return redirect("/")
     else:
         form = PostForm()
         
