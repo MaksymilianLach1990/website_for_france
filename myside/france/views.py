@@ -41,7 +41,7 @@ def add_scenes(request):
         if form.is_valid():
             form.save()
             scene_id = Scenes.objects.filter(name=request.POST['name']).first()
-            return redirect(f'/france/dialog/{scene_id.id}')
+            return redirect(f'dialog', scene_id=scene_id.id)
         else:
             return redirect('add-scenes')
 
