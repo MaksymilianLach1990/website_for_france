@@ -23,3 +23,20 @@ footer {
     width: 100%;
     overflow: hidden;
 }
+
+.website-title {
+    background-image: url('https://cdn.getyourguide.com/img/location/5b3f7e6bc415a.jpeg/99.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 80%;
+    height: 400px;
+    margin: 0 auto;
+}
+
+.title {
+    font-size: 44px;
+    text-align: center;
+    padding-top: 7%;
+    padding-right: 1%;
+}
