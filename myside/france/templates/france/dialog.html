@@ -10,6 +10,25 @@ Dialog
 <!-- Additional files css -->
 {% endblock %}
 
+{% block leftside %}
+<div class="words">
+    <table>
+        <thead>
+            <th>PL</th>
+            <th>FR</th>
+        </thead>
+        <tbody>
+            {% for word in words %}
+            <tr>
+                <td>word.word_pl</td>
+                <td>word.word_fr</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
 {% block main %}
 <div>
     <h3>Dialog scenki</h3>

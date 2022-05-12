@@ -8,37 +8,38 @@ Home page
 
 {% block link %}
 <!-- Additional files css -->
+<link rel="stylesheet" href="{% static 'france/css/words.css' %}">
 {% endblock %}
 
 {% block main %}
-
-<div class="album py-5 bg-light">
-    <div class="container">
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {% for scene in scenes_list %}
-            <div class="col">
-                <div class="card shadow-sm">
-                    {% if scene.scene_image %}
-                    <img src="{{ scene.scene_image }}" alt="{{ scene.scene_image }}">
-                    {% else %}
-                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Obrazek</text></svg>
-                    {% endif %}
-                    <div class="card-body">
-                        <p class="card-text"><b>{{ scene.name }}</b><br>{{ scene.description }}</p>
-                        <div class="d-flex justify-content-between align-items-center">
-                            <div class="btn-group">
-                                <a href="{% url 'dialog' scene.id %}" type="button" class="btn btn-sm btn-primary">Go to</a>
+<div>
+    <div class="album py-5 bg-light">
+        <div class="container">
+            <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                {% for scene in scenes_list %}
+                <div class="col">
+                    <div class="card shadow-sm">
+                        {% if scene.scene_image %}
+                        <img src="{{ scene.scene_image }}" alt="{{ scene.scene_image }}">
+                        {% else %}
+                        <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Obrazek</text></svg>
+                        {% endif %}
+                        <div class="card-body">
+                            <p class="card-text"><b>{{ scene.name }}</b><br>{{ scene.description }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <a href="{% url 'dialog' scene.id %}" type="button" class="btn btn-sm btn-primary">Go to</a>
+                                </div>
+                                <small class="text-muted">{{ scene.created_at }}</small>
                             </div>
-                            <small class="text-muted">{{ scene.created_at }}</small>
                         </div>
                     </div>
                 </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
-    </div>  
+        </div>  
+    </div>
 </div>
-
 <!-- <div class="container">
     {% for post in posts %}
         <div class="card mt-2">

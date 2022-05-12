@@ -56,10 +56,12 @@ def dialog(request, scene_id):
     
     situation = Scenes.objects.get(id=scene_id)
     dialog_list = Phrase.objects.filter(scenes=scene_id).order_by('order')
+    words = Word.objects.filter(scenes=scene_id).all()
 
     context = {
         'dialog_list': dialog_list,
         'situation': situation,
+        'words': words,
         }
 
     return render(request, 'france/dialog.html', context)
@@ -108,11 +110,13 @@ def edit_dialog(request, scene_id):
 
     situation = Scenes.objects.get(id=scene_id)
     dialog_list = Phrase.objects.filter(scenes=scene_id).order_by('order')
+    words = Word.objects.filter(scenes=scene_id).all()
 
     context = {
         'dialog_list': dialog_list,
         'situation': situation,
         'test': test,
+        'words': words,
         }
 
     return render(request, 'france/edit_dialog.html', context)
