@@ -16,8 +16,8 @@
     <!-- Add some css file for another page -->
     {% endblock %}
 </head>
-<body class="container">
-    <header>
+<body>
+    <header class="container">
         <div class="website-title">
             <h1 class="title">Apprentissage de la langue française</h1>
         </div>
@@ -57,13 +57,16 @@
         </nav>
     </header>
     <main>
-        <div>
+        {% block leftside %}
+
+        {% endblock %}
+        <div class="container">
             {% block main %}
             
             {% endblock %}
         </div>
     </main>
-    <br><hr><br>
+    
     <footer class="footer mt-auto py-3 bg-light">
         <div class="container">
             <h5 class="text-muted"><img src="https://th.bing.com/th/id/OIP.hFdq1sCstDcjKxqZMM61TQHaG8?w=199&h=187&c=7&r=0&o=5&pid=1.7" alt=""></h5>

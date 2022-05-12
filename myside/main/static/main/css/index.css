@@ -41,7 +41,7 @@ footer {
     top: 180px;
     left: 500px;
     margin: 0px auto;
-    background-image: linear-gradient(to right, blue 33%, rgb(188, 182, 243) 20%, white 70%, rgb(245, 192, 192) 20%, red 33%);
+    background-image: linear-gradient(to right, blue 32%, rgb(239, 239, 247) 20%, white 71%, rgb(250, 243, 243) 20%, red 33%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
