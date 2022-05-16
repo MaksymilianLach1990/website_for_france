@@ -8,6 +8,7 @@ Dialog
 
 {% block link %}
 <!-- Additional files css -->
+<link rel="stylesheet" href="{% static 'france/css/words.css' %}">
 {% endblock %}
 
 {% block leftside %}
@@ -20,8 +21,8 @@ Dialog
         <tbody>
             {% for word in words %}
             <tr>
-                <td>word.word_pl</td>
-                <td>word.word_fr</td>
+                <td>{{ word.word_pl }}</td>
+                <td>{{ word.word_fr }}</td>
             </tr>
             {% endfor %}
         </tbody>
