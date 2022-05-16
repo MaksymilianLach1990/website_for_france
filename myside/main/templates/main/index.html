@@ -19,20 +19,26 @@
 <body>
     <header class="container">
         <div class="website-title">
-            <h1 class="title">Apprentissage de la langue française</h1>
+            <h1 class="title">Dialogues français</h1>
         </div>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container-fluid">
                 <div>
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'france' %}">Home</a>
+                            <a class="nav-link" href="{% url 'france' %}">Strona główna</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{% url 'scenes-list' %}">Lista scenek</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'dictionary' %}">Dictionary</a>
+                            <a class="nav-link" href="{% url 'dictionary' %}">Słownik</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Aktualności</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Kontakt</a>
                         </li>
                     </ul>
                 </div>
@@ -56,12 +62,19 @@
             </div>
         </nav>
     </header>
-    <main>
-        {% block leftside %}
-
-        {% endblock %}
+    <main class="main">
+        <div class="left-side">
+            {% block leftside %}
+            
+            {% endblock %}
+        </div>
         <div class="container">
             {% block main %}
+            
+            {% endblock %}
+        </div>
+        <div class="right-side">
+            {% block rightside %}
             
             {% endblock %}
         </div>
@@ -69,6 +82,7 @@
     
     <footer class="footer mt-auto py-3 bg-light">
         <div class="container">
+            <div class="flag"></div>
             <h5 class="text-muted"><img src="https://th.bing.com/th/id/OIP.hFdq1sCstDcjKxqZMM61TQHaG8?w=199&h=187&c=7&r=0&o=5&pid=1.7" alt=""></h5>
         </div>
     </footer>

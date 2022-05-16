@@ -9,10 +9,22 @@ body {
 }
 
 .main {
-    width: 90%;
+    display: flex;
+    width: 100%;
     margin: 0 auto;
 
 }
+
+.left-side {
+    width: 20%;
+    border: 1px solid;
+}
+
+.right-side {
+    width: 20%;
+    border: 1px solid;
+}
+
 
 footer {
     text-align: center;
@@ -38,8 +50,8 @@ footer {
     font-size: 41px;
     text-align: center;
     position: absolute;
-    top: 180px;
-    left: 500px;
+    top: 17%;
+    left: 26%;
     margin: 0px auto;
     background-image: linear-gradient(to right, blue 32%, rgb(239, 239, 247) 20%, white 71%, rgb(250, 243, 243) 20%, red 33%);
     -webkit-background-clip: text;
