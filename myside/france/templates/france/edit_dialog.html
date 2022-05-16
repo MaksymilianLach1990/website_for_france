@@ -21,8 +21,8 @@ Edit Dialog
         <tbody>
             {% for word in words %}
             <tr>
-                <td>word.word_pl</td>
-                <td>word.word_fr</td>
+                <td>{{ word.word_pl }}</td>
+                <td>{{ word.word_fr }}</td>
             </tr>
             {% endfor %}
         </tbody>
@@ -35,13 +35,7 @@ Edit Dialog
     <h3>Dialog scenki</h3>
 </div>
 <br><hr><br>
-<div>
-    <h1>Test Zdarzeń</h1>
-    {% if test %}
-    <h4>{{ test }}</h4>
-    {% endif %}
-</div>
-<hr>
+
 <div>
     <h2>Dodaj element</h2>
     <a href="{% url 'add-phrase' situation.id %}" class="btn btn-success">Add sentence</a>

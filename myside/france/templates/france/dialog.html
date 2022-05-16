@@ -9,6 +9,8 @@ Dialog
 {% block link %}
 <!-- Additional files css -->
 <link rel="stylesheet" href="{% static 'france/css/words.css' %}">
+<link rel="stylesheet" href="{% static 'france/css/cloud.css' %}">
+
 {% endblock %}
 
 {% block leftside %}
@@ -32,18 +34,17 @@ Dialog
 
 {% block main %}
 <div>
-    <h3>Dialog scenki</h3>
+    <h2>{{ situation.name }}
+    <h3>{{ situation.description }}</h3>
+    {% if user.is_staff or perms.france.change_scenes %} 
+    <a class="btn btn-primary" href="{% url 'edit-dialog' situation.id %}">Edit</a></h2>
+    {% endif %}
 </div>
 <br><hr><br>
 <div>
 
-    <h2>{{ situation.name }}
-    {% if user.is_staff or perms.france.change_scenes %} 
-    | <a class="btn btn-primary" href="{% url 'edit-dialog' situation.id %}">Edit</a></h2>
-    {% endif %}
-    <h3>{{ situation.description }}</h3>
     {% for sentence in dialog_list %}
-    <div>
+    <div class="cloud">
         <h2><b>{{ sentence.character_name }}</b></h2><br>
         <h3>{{ sentence.sentence }}</h3>
     </div>
