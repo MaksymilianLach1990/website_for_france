@@ -40,15 +40,27 @@ Dialog
     <a class="btn btn-primary" href="{% url 'edit-dialog' situation.id %}">Edit</a></h2>
     {% endif %}
 </div>
+
+<br><hr><br>
+
+<div class="dialog">
+    {% for dialog in dialog_list %}
+
+    {% if dialog.character_name == name %}
+    <h2 class="bubble thought left"><b>{{dialog.character_name}}</b><br>{{dialog.sentence}}</h2>
+
+    {% else %}
+    <h2 class="bubble thought right"><b>{{dialog.character_name}}</b><br>{{dialog.sentence}}</h2>
+
+    {% endif %}
+    {% endfor %}
+
+    
+</div>
+
 <br><hr><br>
 <div>
 
-    {% for sentence in dialog_list %}
-    <div class="cloud">
-        <h2><b>{{ sentence.character_name }}</b></h2><br>
-        <h3>{{ sentence.sentence }}</h3>
-    </div>
-    {% endfor%}
 </div>
 <hr>
 

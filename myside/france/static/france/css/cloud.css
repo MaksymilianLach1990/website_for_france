@@ -1,6 +1,90 @@
-.cloud {
-    background-image: url('https://static.showit.co/800/-FaKMOf1ShGVWDlPEOcw-w/92569/pngpix-com-speech-bubble-png-image-4-500x393_copy.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    background-position: center;
+
+/* bubble left */
+h2.bubble {
+    position: relative;
+	width: 300px;
+	text-align: center;
+	line-height: 1.4em;
+	margin: 40px auto;
+	background-color: #fff;
+	border: 8px solid #333;
+	border-radius: 30px;
+	font-family: sans-serif;
+	padding: 20px;
+	font-size: large;
 }
+
+h2.thought {
+	width: 600px;
+	border-radius: 200px;
+	padding: 30px;	
+}
+
+h2.bubble:before,
+h2.bubble:after {
+	content: ' ';
+	position: absolute;
+	width: 0;
+	height: 0;
+}
+
+h2.thought:before,
+h2.thought:after {
+	bottom: -20px;
+	width: 40px;
+	height: 40px;
+	background-color: #fff;
+	border: 8px solid #333;
+	-webkit-border-radius: 28px;
+	-moz-border-radius: 28px;
+	border-radius: 28px;
+}
+
+h2.thought:after {
+	width: 30px;
+	height: 30px;
+	bottom: -40px;
+	-webkit-border-radius: 18px;
+	-moz-border-radius: 18px;
+	border-radius: 18px;
+}
+
+/* bubbel left */
+
+h2.left {
+    margin-left: 10%;
+    background-color: skyblue;
+}
+
+h2.thought.left:before,
+h2.thought.left:after {
+	left: 10px;
+    background-color: skyblue;
+
+}
+
+h2.thought.left:after {
+	left: 0px;
+    background-color: skyblue;
+
+}
+
+/* bubble right */
+h2.right {
+    margin-right: 10%;
+    background-color: rgb(241, 135, 135);
+}
+
+h2.thought.right:before,
+h2.thought.right:after {
+	right: 10px;
+    background-color: rgb(241, 135, 135);
+
+}
+
+h2.thought.right:after {
+	right: 0px;
+    background-color: rgb(241, 135, 135);
+
+}
+

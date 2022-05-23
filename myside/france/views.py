@@ -57,11 +57,13 @@ def dialog(request, scene_id):
     situation = Scenes.objects.get(id=scene_id)
     dialog_list = Phrase.objects.filter(scenes=scene_id).order_by('order')
     words = Word.objects.filter(scenes=scene_id).all()
+    names = [item.character_name for item in dialog_list]
 
     context = {
         'dialog_list': dialog_list,
         'situation': situation,
         'words': words,
+        'name': names[0],
         }
 
     return render(request, 'france/dialog.html', context)
