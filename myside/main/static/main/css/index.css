@@ -37,6 +37,8 @@ footer {
 }
 
 .website-title {
+    position: relative;
+    display: flex;
     background-image: url('https://cdn.getyourguide.com/img/location/5b3f7e6bc415a.jpeg/99.webp');
     background-repeat: no-repeat;
     background-size: cover;
@@ -50,9 +52,8 @@ footer {
     font-size: 41px;
     text-align: center;
     position: absolute;
-    top: 17%;
-    left: 26%;
-    margin: 0px auto;
+    top: 39%;
+    left: 34%;
     background-image: linear-gradient(to right, blue 32%, rgb(239, 239, 247) 20%, white 71%, rgb(250, 243, 243) 20%, red 33%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
