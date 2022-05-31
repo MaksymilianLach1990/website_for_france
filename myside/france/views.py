@@ -57,8 +57,12 @@ def dialog(request, scene_id):
     situation = Scenes.objects.get(id=scene_id)
     dialog_list = Phrase.objects.filter(scenes=scene_id).order_by('order')
     words = Word.objects.filter(scenes=scene_id).all()
-    names = [item.character_name for item in dialog_list]
-
+    # wyskakuje bład w przypadku braku dodanych dialogów, nie wyszukuje żadnych imion
+    # ustaw alternatywną opcje w przypadku nowej scenki
+    if dialog_list:
+        names = [item.character_name for item in dialog_list]
+    else:
+        names = ['']
     context = {
         'dialog_list': dialog_list,
         'situation': situation,

@@ -46,6 +46,8 @@ Dialog
 <div class="dialog">
     {% for dialog in dialog_list %}
 
+    {% if dialog.character_name == 'podejście' %}
+
     {% if dialog.character_name == name %}
     <h2 class="bubble thought left"><b>{{dialog.character_name}}</b><br>{{dialog.sentence}}</h2>
 
